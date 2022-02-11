@@ -2,6 +2,9 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import dotenv from 'dotenv'
+
+dotenv.config();
 
 const app = express();
 
@@ -21,7 +24,7 @@ app.get('/',(req,res) => {
 const PORT = process.env.PORT || 5000 ;
 app.listen(PORT , console.log('serever is running in the next port: '+ PORT))
 
-mongoose.connect('mongodb+srv://sdrosssi:053443478512@cluster0.2kunb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(process.env.CONNECTION_URL,
     {useNewUrlParser :true},
     () => {
         console.log("connected to db")
