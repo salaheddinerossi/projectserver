@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv'
+import userRouter from './routes/user.js'
 
 dotenv.config();
 
@@ -15,9 +16,8 @@ app.use(cors());
 import router from './routes/posts.js';
 
 app.use('/posts',router);
-app.get('/',(req,res) => {
-    res.send('salaam')
-})
+app.get('/', userRouter)
+app.use('/user', userRouter)
 
 // connect to databasse 
 
